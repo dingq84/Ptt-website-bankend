@@ -25,6 +25,9 @@
     "date": {
       "type": "string",
       "required": true
+    },
+    "thread": {
+      "type": "string"
     }
   }
 }

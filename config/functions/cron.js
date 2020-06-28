@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Cron config that gives you an opportunity
@@ -9,7 +9,7 @@
  *
  * See more details here: https://strapi.io/documentation/v3.x/concepts/configurations.html#cron-tasks
  */
-
+let isRunning = false;
 module.exports = {
   /**
    * Simple example.
@@ -18,4 +18,11 @@ module.exports = {
   // '0 1 * * 1': () => {
   //
   // }
+  "*/10 * * * * *": () => {
+    if (!isRunning) {
+      isRunning = true;
+      strapi.config.functions.articles();
+    }
+    // Add your own logic here (e.g. send a queue of email, create a database backup, etc.).
+  },
 };
