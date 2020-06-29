@@ -21,7 +21,7 @@ module.exports = {
   "*/10 * * * * *": () => {
     if (!isRunning) {
       isRunning = true;
-      strapi.config.functions.articles();
+      // strapi.config.functions.articles();
     }
     // Add your own logic here (e.g. send a queue of email, create a database backup, etc.).
   },

@@ -16,7 +16,7 @@
     "href": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "author": {
       "type": "string",
