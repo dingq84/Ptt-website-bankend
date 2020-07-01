@@ -28,6 +28,11 @@
     },
     "thread": {
       "type": "string"
+    },
+    "users": {
+      "via": "articles",
+      "plugin": "users-permissions",
+      "collection": "user"
     }
   }
 }

@@ -49,18 +49,18 @@ module.exports = {
     // Limit the data count
     newParams._limit = 10;
     const result = await strapi.services.article.find(newParams);
+
     return result.map((item) => ({
       title: item.title,
-      href: item.href,
       author: item.author,
       date: item.date,
       articleId: item.id,
       thread: item.thread,
+      isFavorited: item.users.some((user) => user.id === ctx.state.user.id),
     }));
   },
   async findOne(ctx) {
     const result = await strapi.services.article.findOne({ id: ctx.params.id });
-    console.log(result);
     const content = await getArticle(result.href);
 
     return content;

@@ -54,7 +54,9 @@
       "configurable": false
     },
     "articles": {
-      "collection": "article"
+      "collection": "article",
+      "via": "users",
+      "dominant": true
     }
   }
 }

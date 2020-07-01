@@ -146,9 +146,19 @@ module.exports = {
 
         ctx.send({
           status: "Authenticated",
-          user: sanitizeEntity(user.toJSON ? user.toJSON() : user, {
-            model: strapi.query("user", "users-permissions").model,
-          }),
+          user: sanitizeEntity(
+            {
+              username: user.username,
+              email: user.email,
+              userId: user.id,
+            },
+            {
+              model: strapi.query("user", "users-permissions").model,
+            }
+          ),
+          // user: sanitizeEntity(user.toJSON ? user.toJSON() : user, {
+          //   model: strapi.query("user", "users-permissions").model,
+          // }),
         });
       }
     } else {
