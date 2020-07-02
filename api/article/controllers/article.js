@@ -50,13 +50,15 @@ module.exports = {
     newParams._limit = 10;
     const result = await strapi.services.article.find(newParams);
 
+    const { user } = ctx.state;
     return result.map((item) => ({
       title: item.title,
       author: item.author,
       date: item.date,
       articleId: item.id,
       thread: item.thread,
-      isFavorited: item.users.some((user) => user.id === ctx.state.user.id),
+      isFavorited:
+        user && item.users.some((itemUser) => itemUser.id === user.id),
     }));
   },
   async findOne(ctx) {
