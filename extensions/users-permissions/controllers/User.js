@@ -27,9 +27,7 @@ module.exports = {
     const user = ctx.state.user;
 
     if (!user) {
-      return ctx.badRequest(null, [
-        { messages: [{ id: "No authorization header was found" }] },
-      ]);
+      return ctx.badRequest(null, "No authorization header was found");
     }
 
     const fullUser = await strapi.plugins[
@@ -147,7 +145,6 @@ module.exports = {
       }
     }
 
-    // console.log(updateData);
     const data = await strapi.plugins["users-permissions"].services.user.edit(
       { id },
       updateData
